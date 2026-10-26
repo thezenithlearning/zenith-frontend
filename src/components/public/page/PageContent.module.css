@@ -1,0 +1,128 @@
+/*
+ * Typography for editor-authored HTML. Mirrors the styles of the visual
+ * designer's exported page so published content looks like what was
+ * designed. Everything is scoped to .content.
+ */
+
+.content {
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.content h1 {
+  margin: 0 0 24px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.content h2 {
+  margin: 2.25rem 0 1.1rem;
+  font-size: 2rem;
+  font-weight: 750;
+  line-height: 1.15;
+}
+
+.content h3 {
+  margin: 1.9rem 0 1rem;
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.content h4 {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.content p {
+  min-height: 1.5rem;
+  margin: 0 0 1rem;
+}
+
+.content ul {
+  margin: 1.1rem 0;
+  padding-left: 2rem;
+  list-style: disc;
+}
+
+.content ol {
+  margin: 1.1rem 0;
+  padding-left: 2rem;
+  list-style: decimal;
+}
+
+.content li {
+  margin: 0.3rem 0;
+}
+
+.content blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid #7c3aed;
+  background: rgba(124, 58, 237, 0.08);
+}
+
+.content a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.content pre {
+  overflow-x: auto;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #111827;
+  color: #fff;
+}
+
+.content hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid rgba(127, 127, 127, 0.35);
+}
+
+.content table {
+  width: 100%;
+  margin: 1.25rem 0;
+  border-collapse: collapse;
+}
+
+.content th,
+.content td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(127, 127, 127, 0.35);
+  text-align: left;
+}
+
+.content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+}
+
+.content img[data-align="left"] {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.content img[data-align="center"] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content img[data-align="right"] {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+@media (max-width: 768px) {
+  .content h1 {
+    font-size: 2rem;
+  }
+
+  .content h2 {
+    font-size: 1.6rem;
+  }
+}

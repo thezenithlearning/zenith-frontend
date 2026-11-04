@@ -64,7 +64,7 @@ export default function QuizPlayer({ slug }: { slug: string }) {
       <div className="mx-auto max-w-xl px-4 py-24">
         <EmptyState title="Mock test not found" text="This test may have been removed or is not published yet." />
         <div className="mt-6 text-center">
-          <Link href="/mock-tests" className="font-semibold text-[#2147a8] hover:underline">
+          <Link href="/classwise-flash-card" className="font-semibold text-[#2147a8] hover:underline">
             Browse all mock tests
           </Link>
         </div>
@@ -189,7 +189,7 @@ function Player({ quiz }: { quiz: IPublicQuiz }) {
     return (
       <main className="bg-slate-50 px-4 py-10 sm:py-16">
         <div className="mx-auto max-w-3xl">
-          <Link href="/mock-tests" className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500 hover:text-[#2147a8]">
+          <Link href="/classwise-flash-card" className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500 hover:text-[#2147a8]">
             <ArrowLeft className="h-4 w-4" /> All mock tests
           </Link>
           <div className="mt-4 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-blue-900/5">
@@ -585,7 +585,7 @@ function ResultView({ quiz, result, onRetake }: { quiz: IPublicQuiz; result: Qui
               <RotateCcw className="h-4 w-4" /> Retake test
             </button>
             <Link
-              href="/mock-tests"
+              href="/classwise-flash-card"
               className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50"
             >
               More mock tests

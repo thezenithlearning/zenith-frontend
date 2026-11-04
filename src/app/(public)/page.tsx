@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
-import Hero from "@/components/home/Hero";
-import AboutIntro from "@/components/home/AboutIntro";
-import Method from "@/components/home/Method";
+import BannerSlider from "@/components/home/BannerSlider";
+import Credibility from "@/components/home/Credibility";
+import HomeCourses from "@/components/home/HomeCourses";
+import DemoCta from "@/components/home/DemoCta";
+import CityPresence from "@/components/home/CityPresence";
 import Methodology from "@/components/home/Methodology";
 import AILearning from "@/components/home/AILearning";
-import Programs from "@/components/home/Programs";
+import LearningComparison from "@/components/home/LearningComparison";
 import Testimonials from "@/components/home/Testimonials";
 import Enquiry from "@/components/home/Enquiry";
 import HomeFaq from "@/components/home/HomeFaq";
@@ -45,13 +47,16 @@ export default function Home() {
   return (
     <main className="overflow-x-hidden">
       <HomeSchema />
-      <Hero />
-      <AboutIntro />
-      <Method />
+      <BannerSlider />
+      <Credibility />
+      <HomeCourses />
+      <DemoCta />
+      <CityPresence />
       <Methodology />
       <AILearning />
-      <Programs />
+      <LearningComparison />
       <Testimonials />
+      <DemoCta />
       <HomeFaq items={HOME_FAQS} />
       <Enquiry />
       <HomePopup />

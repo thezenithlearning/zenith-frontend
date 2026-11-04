@@ -29,8 +29,8 @@
   --color-surface: #ffffff;
   --color-surface-muted: #f7f8fc;
   --color-surface-sunken: #edf0f8;
-  --color-ink: #0f172a;
-  --color-ink-muted: #475569;
+  --color-ink: #0c1d4a;
+  --color-ink-muted: #4b5b7b;
   --color-ink-faint: #94a3b8;
   --color-line: #e2e8f0;
   --color-line-soft: #f1f5f9;
@@ -41,7 +41,7 @@
   background-image: linear-gradient(
     120deg,
     var(--color-brand-start) 0%,
-    var(--color-brand-end) 100%
+    var(--color-brand-mid) 100%
   );
 }
 
@@ -65,14 +65,10 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Shared brand primary CTA: gradient fill, subtle lift + shadow on hover */
+/* Shared primary action follows the navy-and-gold homepage CTA palette. */
 @utility btn-brand {
-  background-image: linear-gradient(
-    120deg,
-    var(--color-brand-start) 0%,
-    var(--color-brand-end) 100%
-  );
-  color: #ffffff;
+  background-color: var(--color-accent);
+  color: var(--color-brand-start);
   transition: box-shadow 0.25s ease, transform 0.25s ease, filter 0.25s ease;
 }
 .btn-brand:hover {
@@ -171,8 +167,8 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: #ffffff !important;
-  color: #000000 !important;
+  background-color: var(--color-surface);
+  color: var(--color-ink);
   /* `clip`, not `hidden`: both stop horizontal scroll, but `hidden` turns body
      into a scroll container and breaks `position: sticky` everywhere. `clip`
      does not establish a scroll container, so sticky sidebars keep working. */
@@ -180,8 +176,8 @@ body {
 }
 
 body {
-  background-color: #ffffff !important;
-  color: #000000 !important;
+  background-color: var(--color-surface);
+  color: var(--color-ink);
 }
 
 *,
@@ -190,12 +186,15 @@ body {
   box-sizing: border-box;
 }
 
-/* Rectangular visual language requested for controls, cards and chips. */
+/* Rounded visual language: pill buttons, curved cards. Utility classes like
+   rounded-2xl are left alone so each component can pick its own radius. */
 button,
-[role="button"],
-article,
-[class*="rounded"] {
-  border-radius: 2px !important;
+[role="button"] {
+  border-radius: 9999px;
+}
+
+article {
+  border-radius: 1.5rem;
 }
 
 /* Deliberately rounded details in the homepage's compact navigation UI. */
@@ -516,4 +515,19 @@ article,
 
 .animate-shake {
   animation: shake 0.5s ease-in-out;
+}
+
+/* Credibility logo strip: endless horizontal scroll (track holds the list twice). */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
 }

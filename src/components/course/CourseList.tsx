@@ -101,10 +101,10 @@ export default function CourseDiscoveryPage() {
     return (
       <div className="min-h-[60vh] bg-white py-10">
         <div className="mx-auto max-w-6xl space-y-8 px-4 sm:px-6 lg:px-8">
-          <div className="h-14 animate-pulse border border-gray-200 bg-gray-50" />
+          <div className="h-14 animate-pulse rounded-full border border-gray-200 bg-gray-50" />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="animate-pulse border border-gray-200">
+              <div key={i} className="animate-pulse overflow-hidden rounded-3xl border border-gray-200">
                 <div className="aspect-16/10 bg-gray-100" />
                 <div className="space-y-3 p-5">
                   <div className="h-3 w-1/4 rounded bg-gray-200" />
@@ -137,7 +137,7 @@ export default function CourseDiscoveryPage() {
           <button
             id="course-course-list-retry-button"
             onClick={() => window.location.reload()}
-            className="mt-6 bg-brand-mid px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-start"
+            className="mt-6 rounded-full bg-brand-mid px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-start"
           >
             Retry
           </button>
@@ -159,7 +159,7 @@ export default function CourseDiscoveryPage() {
         </div>
 
         <div className="relative mx-auto mt-8 max-w-2xl">
-          <div className="relative flex items-center border border-gray-200 bg-white transition-colors focus-within:border-brand-mid">
+          <div className="relative flex items-center rounded-full border border-gray-200 bg-white transition-colors focus-within:border-brand-mid">
             <Search className="absolute left-4 h-4 w-4 text-gray-400" />
             <input
               type="text"
@@ -189,7 +189,7 @@ export default function CourseDiscoveryPage() {
                 key={category}
                 type="button"
                 onClick={() => jumpToCategory(category)}
-                className="border border-gray-200 px-3.5 py-1.5 text-xs font-semibold text-gray-600 transition-colors hover:border-brand-mid/40 hover:text-brand-mid"
+                className="rounded-full border border-gray-200 px-3.5 py-1.5 text-xs font-semibold text-gray-600 transition-colors hover:border-brand-mid/40 hover:text-brand-mid"
               >
                 <span className="uppercase">{category}</span>
               </button>
@@ -226,7 +226,7 @@ export default function CourseDiscoveryPage() {
         )}
 
         {isSearching && searchResults.length === 0 && (
-          <div className="mt-10 border border-gray-200 p-10 text-center sm:p-14">
+          <div className="mt-10 rounded-3xl border border-gray-200 p-10 text-center sm:p-14">
             <p className="text-5xl">🔍</p>
             <h3 className="uppercase mt-4 text-xl font-bold text-gray-900">
               No courses found
@@ -237,7 +237,7 @@ export default function CourseDiscoveryPage() {
             <button
               id="course-list-clear-empty-search-button"
               onClick={clearSearch}
-              className="mt-5 bg-brand-mid px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-start"
+              className="mt-5 rounded-full bg-brand-mid px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-start"
             >
               Clear search
             </button>
@@ -297,7 +297,7 @@ export default function CourseDiscoveryPage() {
                     id={`course-list-scroll-category-left-${encodeURIComponent(category)}-button`}
                     onClick={() => scrollCategory(category, 'left')}
                     aria-label={`Scroll ${category} left`}
-                    className="absolute -left-4 top-1/2 z-10 hidden h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center border border-gray-200 bg-white text-gray-600 opacity-0 shadow-lg transition-all hover:bg-brand-mid hover:text-white focus:opacity-100 group-hover/rail:opacity-100 sm:flex"
+                    className="absolute -left-4 top-1/2 z-10 hidden h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 opacity-0 shadow-lg transition-all hover:bg-brand-mid hover:text-white focus:opacity-100 group-hover/rail:opacity-100 sm:flex"
                   >
                     <ChevronLeft className="h-4 w-4" />
                   </button>
@@ -322,7 +322,7 @@ export default function CourseDiscoveryPage() {
                     id={`course-list-scroll-category-right-${encodeURIComponent(category)}-button`}
                     onClick={() => scrollCategory(category, 'right')}
                     aria-label={`Scroll ${category} right`}
-                    className="absolute -right-4 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 translate-x-1/2 items-center justify-center border border-gray-200 bg-white text-gray-600 opacity-0 shadow-lg transition-all hover:bg-brand-mid hover:text-white focus:opacity-100 group-hover/rail:opacity-100 sm:flex"
+                    className="absolute -right-4 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 opacity-0 shadow-lg transition-all hover:bg-brand-mid hover:text-white focus:opacity-100 group-hover/rail:opacity-100 sm:flex"
                   >
                     <ChevronRight className="h-4 w-4" />
                   </button>
@@ -332,7 +332,7 @@ export default function CourseDiscoveryPage() {
           })}
 
         {!isLoading && courses.length === 0 && (
-          <div className="mt-10 border border-gray-200 p-10 text-center sm:p-16">
+          <div className="mt-10 rounded-3xl border border-gray-200 p-10 text-center sm:p-16">
             <BookOpen className="mx-auto h-12 w-12 text-brand-mid/30" />
             <h3 className="uppercase mt-5 text-2xl font-bold text-gray-900">
               No courses available

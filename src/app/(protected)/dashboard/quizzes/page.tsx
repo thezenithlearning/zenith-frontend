@@ -29,7 +29,7 @@ export default function QuizzesDashboardPage() {
       getTitle={(q) => q.title}
       getSubtitle={(q) => q.seriesName}
       getEditHref={(q) => `/dashboard/quizzes/${q._id}`}
-      getPublicHref={(q) => `/mock-tests/${q.slug}`}
+      getPublicHref={(q) => `/classwise-flash-card/${q.slug}`}
       getMeta={(q) => (
         <>
           <span>{q.questionCount} questions</span>

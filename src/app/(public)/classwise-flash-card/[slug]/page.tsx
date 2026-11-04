@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: quiz.seoTitle || quiz.title,
     description: quiz.seoDescription || quiz.description || `Attempt the ${quiz.title} mock test online.`,
-    alternates: { canonical: `/mock-tests/${slug}` },
+    alternates: { canonical: `/classwise-flash-card/${slug}` },
   };
 }
 

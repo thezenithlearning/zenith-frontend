@@ -34,7 +34,7 @@ export default function MockTestList() {
 
   const setCategory = (slug: string) => {
     setPage(1);
-    router.replace(slug ? `/mock-tests?category=${encodeURIComponent(slug)}` : '/mock-tests', { scroll: false });
+    router.replace(slug ? `/classwise-flash-card?category=${encodeURIComponent(slug)}` : '/classwise-flash-card', { scroll: false });
   };
 
   return (
@@ -71,7 +71,7 @@ export default function MockTestList() {
               {quizzes.map((q) => (
                 <Link
                   key={q._id}
-                  href={`/mock-tests/${q.slug}`}
+                  href={`/classwise-flash-card/${q.slug}`}
                   className="group flex flex-col rounded-3xl border border-slate-200 bg-white p-6 transition-all hover:-translate-y-1 hover:border-[#2147a8]/40 hover:shadow-xl hover:shadow-blue-900/10"
                 >
                   <div className="flex items-start justify-between gap-3">

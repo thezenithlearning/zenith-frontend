@@ -9,7 +9,7 @@ const ROUTES = [
   "/about-us",
   "/course",
   "/blog",
-  "/mock-tests",
+  "/classwise-flash-card",
   "/pyqs",
   "/qna",
   "/faqs",

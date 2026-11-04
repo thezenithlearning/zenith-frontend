@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Free Mock Tests & Test Series',
   description:
     'Attempt timed MCQ mock tests for IB, SAT, AP, JEE and NEET. Get instant scores, accuracy and answer review.',
-  alternates: { canonical: '/mock-tests' },
+  alternates: { canonical: '/classwise-flash-card' },
 };
 
 export default function MockTestsPage() {

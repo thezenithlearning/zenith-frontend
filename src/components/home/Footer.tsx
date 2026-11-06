@@ -5,7 +5,7 @@ import { ArrowUp, Mail } from "lucide-react";
 import { RiInstagramLine, RiLinkedinFill, RiYoutubeFill } from "react-icons/ri";
 
 import { BRAND } from "@/content/brand";
-import ZenithLogo from "@/components/brand/ZenithLogo";
+import ZenithLogoImage from "@/components/brand/ZenithLogoImage";
 
 const PROGRAM_LINKS = [
   { href: "/course/ib-dp-physics", label: "IB DP Physics" },
@@ -62,7 +62,9 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 pb-10 pt-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <ZenithLogo tone="light" />
+            <span className="inline-block rounded-2xl bg-white px-3 py-1 shadow-lg shadow-black/20">
+              <ZenithLogoImage className="h-14 w-40" />
+            </span>
             <p className="font-display mt-6 max-w-sm text-2xl font-medium leading-snug">
               Reach your <span className="italic text-accent">Zenith.</span>
             </p>

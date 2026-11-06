@@ -1,6 +1,6 @@
 'use client';
 
-import ZenithLogo, { ZenithMark } from "@/components/brand/ZenithLogo";
+import ZenithLogoImage from "@/components/brand/ZenithLogoImage";
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -117,7 +117,7 @@ export default function LoginPage() {
 
             <div className="relative z-10">
               <div className="inline-flex items-center gap-3 rounded-2xl bg-white p-3 shadow-lg shadow-black/10">
-                <ZenithLogo />
+                <ZenithLogoImage className="h-14 w-40" />
               </div>
             </div>
 
@@ -156,7 +156,7 @@ export default function LoginPage() {
             <div className="mx-auto w-full max-w-sm">
               {/* Mobile logo */}
               <div className="mb-8 lg:hidden">
-                <ZenithLogo />
+                <ZenithLogoImage className="h-14 w-40" />
               </div>
 
               <div className="mb-8">

@@ -1,6 +1,6 @@
 'use client';
 
-import ZenithLogo, { ZenithMark } from "@/components/brand/ZenithLogo";
+import ZenithLogoImage, { ZenithLogoEmblem } from "@/components/brand/ZenithLogoImage";
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -192,7 +192,7 @@ const Sidebar = ({
             {/* Expanded logo */}
             {(!isCollapsed || isMobileOpen) && (
               <div className="flex items-center">
-                <ZenithLogo />
+                <ZenithLogoImage className="h-12 w-36" />
               </div>
             )}
 
@@ -205,7 +205,7 @@ const Sidebar = ({
                   bg-white shadow-sm
                 "
               >
-                <ZenithMark className="h-9 w-9" />
+                <ZenithLogoEmblem className="h-11 w-11" />
               </div>
             )}
           </Link>

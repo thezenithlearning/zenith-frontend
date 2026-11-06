@@ -29,7 +29,13 @@ export const getCourseErrorMessage = (
   }
 
   if (apiError.status === 401) return 'Session expired. Please login again.';
-  if (apiError.status === 403) return 'You do not have permission to perform this action.';
+  if (apiError.status === 403) {
+    const response = apiError.data;
+    if (response && typeof response === 'object' && response.message?.trim()) {
+      return response.message;
+    }
+    return 'The server denied this request. Confirm that your signed-in account has the admin role on this API server.';
+  }
   if (apiError.status === 404) return 'Course not found.';
 
   if (typeof apiError.data === 'string' && apiError.data.trim()) {

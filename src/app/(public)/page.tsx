@@ -11,6 +11,7 @@ import AILearning from "@/components/home/AILearning";
 import LearningComparison from "@/components/home/LearningComparison";
 import Testimonials from "@/components/home/Testimonials";
 import Enquiry from "@/components/home/Enquiry";
+import HomeSeoContent from "@/components/home/HomeSeoContent";
 import HomeFaq from "@/components/home/HomeFaq";
 import HomePopup from "@/components/ads/HomePopup";
 import HomeSchema from "@/components/seo/HomeSchema";
@@ -64,6 +65,7 @@ export default async function Home() {
       <CityPresence />
       <HomeFaq items={faqs} />
       <Enquiry />
+      <HomeSeoContent />
       <HomePopup />
     </main>
   );

@@ -43,7 +43,7 @@ export default function Testimonials() {
           />
         </Reveal>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
           {QUOTES.map((item, i) => (
             <Reveal key={item.who + item.meta} delay={0.08 * i} className="h-full">
               <figure className="group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white transition-shadow hover:shadow-xl hover:shadow-brand-start/10">

@@ -20,7 +20,8 @@ export const PROGRAM_OPTIONS = [
 const field =
   "w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-brand-mid focus:ring-4 focus:ring-brand-mid/15";
 
-export default function Enquiry() {
+export default function Enquiry({ variant = "default" }: { variant?: "default" | "contact" }) {
+  const isContact = variant === "contact";
   const pathname = usePathname();
   const [createLead, { isLoading }] = useCreateLeadMutation();
   const [form, setForm] = useState({ name: "", email: "", phone: "", program: "", message: "" });
@@ -46,7 +47,7 @@ export default function Enquiry() {
         phone,
         course: form.program,
         ...(form.message.trim() ? { message: form.message.trim() } : {}),
-        source: "home-enquiry",
+        source: isContact ? "contact-enquiry" : "home-enquiry",
         pagePath: pathname || "/",
         pageTitle: typeof document !== "undefined" ? document.title.slice(0, 300) : undefined,
       }).unwrap();
@@ -58,7 +59,7 @@ export default function Enquiry() {
   };
 
   return (
-    <section id="admissions" className="relative isolate overflow-hidden bg-brand-start py-20 sm:py-28">
+    <section id="admissions" className={`relative isolate scroll-mt-24 overflow-hidden bg-brand-start ${isContact ? "py-14 sm:py-20" : "py-20 sm:py-28"}`}>
       <div aria-hidden className="absolute inset-0 -z-10">
         <div className="absolute -right-32 -top-32 h-[30rem] w-[30rem] rounded-full bg-brand-end/30 blur-[130px]" />
         <div className="absolute -bottom-40 -left-24 h-[24rem] w-[24rem] rounded-full bg-accent/15 blur-[120px]" />
@@ -66,14 +67,21 @@ export default function Enquiry() {
 
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20 lg:px-8">
         <Reveal>
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent">Admissions &amp; Enquiries</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent">{isContact ? "Let's find your starting point" : "Admissions & Enquiries"}</p>
           <h2 className="font-display mt-4 text-4xl font-medium leading-[1.1] text-white sm:text-5xl">
-            Ready to reach your <span className="italic text-accent">Zenith?</span>
+            {isContact ? <>A little about you.<br /><span className="italic text-accent">A plan for what&apos;s next.</span></> : <>Ready to reach your <span className="italic text-accent">Zenith?</span></>}
           </h2>
           <p className="mt-5 max-w-md text-lg leading-8 text-blue-100/75">
             Tell us the student&apos;s curriculum, grade, target exam and goals. We&apos;ll recommend the right
             learning pathway.
           </p>
+          {isContact && <div className="mt-8">
+            <p className="mb-3 text-sm font-semibold text-white">What would you like to explore?</p>
+            <div className="flex flex-wrap gap-2" role="group" aria-label="Quick program selection">
+              {PROGRAM_OPTIONS.map(option => <button key={option} type="button" aria-pressed={form.program === option} onClick={() => setForm(previous => ({ ...previous, program: option }))} className={`cursor-pointer rounded-full border px-4 py-2.5 text-sm transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${form.program === option ? "border-accent bg-accent font-semibold text-brand-start" : "border-white/25 text-white hover:bg-white/10"}`}>{option}</button>)}
+            </div>
+            <p className="mt-4 text-xs leading-6 text-blue-100/65">Choose a pathway to prefill the form, or select “Not sure yet” and we&apos;ll help you decide.</p>
+          </div>}
           <p className="mt-8 text-sm text-blue-100/60">
             Prefer email? Write to{" "}
             <a className="font-semibold text-white underline-offset-4 hover:underline" href={`mailto:${BRAND.admissionsEmail}`}>
@@ -85,7 +93,7 @@ export default function Enquiry() {
         <Reveal delay={0.1}>
           <div className="rounded-3xl bg-white p-6 shadow-2xl sm:p-9">
             {done ? (
-              <div className="py-12 text-center">
+              <div role="status" className="py-12 text-center">
                 <CheckCircle2 className="mx-auto h-14 w-14 text-brand-mid" />
                 <h3 className="font-display mt-4 text-2xl font-medium text-brand-start">Thank you!</h3>
                 <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-slate-600">
@@ -95,6 +103,7 @@ export default function Enquiry() {
               </div>
             ) : (
               <form onSubmit={submit} noValidate className="grid gap-4 sm:grid-cols-2">
+                {isContact && <div className="mb-2 border-b border-slate-100 pb-5 sm:col-span-2"><h2 className="font-display text-2xl text-brand-start">Tell us what you have in mind.</h2><p className="mt-2 text-sm text-slate-500">Your details help us connect you with the right support.</p></div>}
                 {error && (
                   <div role="alert" className="rounded-xl border border-red-200 bg-red-50 px-4 py-2.5 text-sm text-red-700 sm:col-span-2">
                     {error}

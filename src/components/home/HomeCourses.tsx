@@ -12,7 +12,7 @@ export default function HomeCourses() {
   const { data, isLoading, isError, refetch } = useGetCoursesQuery({ status: "active", limit: 6, page: 1 });
   const courses = data?.data ?? [];
   return (
-    <section id="courses" className="bg-surface-muted pb-16 pt-8 sm:pb-24 sm:pt-10">
+    <section id="courses" className="scroll-mt-24 bg-surface-muted py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <div className="max-w-3xl">

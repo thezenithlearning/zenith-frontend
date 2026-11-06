@@ -14,7 +14,7 @@ export const OFFICE = {
 export const ADMISSION_STEPS = [
   {
     title: "Send an enquiry",
-    text: "Share the student's curriculum, grade, target exam and goals using the form below.",
+    text: "Share the student's curriculum, grade, target exam and goals using the enquiry form.",
   },
   {
     title: "Diagnostic conversation",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import BannerSlider from "@/components/home/BannerSlider";
+import HomeResources from "@/components/home/HomeResources";
 import Credibility from "@/components/home/Credibility";
 import HomeCourses from "@/components/home/HomeCourses";
 import DemoCta from "@/components/home/DemoCta";
@@ -54,12 +55,13 @@ export default async function Home() {
       <Credibility />
       <HomeCourses />
       <DemoCta />
-      <CityPresence />
       <Methodology />
       <AILearning />
       <LearningComparison />
       <Testimonials />
       <DemoCta />
+      <HomeResources />
+      <CityPresence />
       <HomeFaq items={faqs} />
       <Enquiry />
       <HomePopup />

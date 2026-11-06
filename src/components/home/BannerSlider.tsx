@@ -1,6 +1,7 @@
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -28,17 +29,19 @@ export default function BannerSlider() {
   const [pos, setPos] = useState(1);
   const [animate, setAnimate] = useState(true);
   const [paused, setPaused] = useState(false);
+  const [stopped, setStopped] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const reduced = useReducedMotion();
   const touchX = useRef<number | null>(null);
 
   const showPrev = () => setPos((p) => (p > 0 ? p - 1 : p));
   const showNext = () => setPos((p) => (p < count + 1 ? p + 1 : p));
 
   useEffect(() => {
-    if (paused || count < 2) return;
+    if (paused || stopped || focused || reduced || count < 2) return;
     const id = setInterval(showPrev, INTERVAL_MS);
     return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [paused, count, pos]);
+  }, [paused, stopped, focused, reduced, count, pos]);
 
   // After a snap, re-enable the transition on the next frames.
   useEffect(() => {
@@ -64,6 +67,10 @@ export default function BannerSlider() {
       className="relative w-full touch-pan-y select-none overflow-hidden bg-brand-start"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setFocused(true)}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
+      }}
       onTouchStart={(e) => {
         touchX.current = e.touches[0].clientX;
         setPaused(true);
@@ -81,7 +88,7 @@ export default function BannerSlider() {
       }}
     >
       <div
-        className={`flex ${animate ? "transition-transform duration-700 ease-in-out" : ""}`}
+        className={`flex ${animate ? "transition-transform duration-700 ease-in-out motion-reduce:duration-1" : ""}`}
         style={{ transform: `translateX(-${pos * 100}%)` }}
         onTransitionEnd={handleTransitionEnd}
       >
@@ -125,7 +132,7 @@ export default function BannerSlider() {
             type="button"
             aria-label="Previous banner"
             onClick={showPrev}
-            className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white transition hover:bg-black/60"
+            className="absolute left-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80 sm:left-3"
           >
             <ChevronLeft size={20} />
           </button>
@@ -133,11 +140,11 @@ export default function BannerSlider() {
             type="button"
             aria-label="Next banner"
             onClick={showNext}
-            className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white transition hover:bg-black/60"
+            className="absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80 sm:right-3"
           >
             <ChevronRight size={20} />
           </button>
-          <div className="absolute inset-x-0 bottom-3 flex justify-center gap-2">
+          <div className="flex min-h-12 items-center justify-center gap-0 bg-brand-start sm:absolute sm:inset-x-0 sm:bottom-2 sm:mx-auto sm:w-fit sm:rounded-full sm:bg-brand-start/80 sm:px-2">
             {SLIDES.map((slide, i) => (
               <button
                 key={slide.src}
@@ -145,9 +152,10 @@ export default function BannerSlider() {
                 aria-label={`Go to banner ${i + 1}`}
                 aria-current={i === active}
                 onClick={() => setPos(i + 1)}
-                className={`h-2 rounded-full transition-all ${i === active ? "w-6 bg-accent" : "w-2 bg-white/60"}`}
-              />
+                className="flex h-11 w-9 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-accent"
+              ><span className={`h-2 rounded-full transition-all ${i === active ? "w-6 bg-accent" : "w-2 bg-white/60"}`} /></button>
             ))}
+            {!reduced && <button type="button" aria-label={stopped ? "Play banners" : "Pause banners"} onClick={() => setStopped(value => !value)} className="flex h-11 w-11 items-center justify-center rounded-full text-white hover:bg-white/15">{stopped ? <Play size={16} /> : <Pause size={16} />}</button>}
           </div>
         </>
       )}

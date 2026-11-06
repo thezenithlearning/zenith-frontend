@@ -1,33 +1,26 @@
-import ImageMarquee from "@/components/home/ImageMarquee";
-import CompanyMetrics from "@/components/home/CompanyMetrics";
+import type { Metadata } from "next";
+import AboutExperience from "@/components/about/AboutExperience";
 import CompanyStory from "@/components/home/CompanyStory";
+import Team from "@/components/home/Team";
+import CompanyMetrics from "@/components/home/CompanyMetrics";
 import Methodology from "@/components/home/Methodology";
 import AILearning from "@/components/home/AILearning";
-import PageHero from "@/components/home/PageHero";
-import Team from "@/components/home/Team";
+import ImageMarquee from "@/components/home/ImageMarquee";
+import ConnectStrip from "@/components/contact/ConnectStrip";
 import CTASection from "@/components/shared/CTASection";
 
-export default function AboutPage() {
-  return (
-    <main className="overflow-x-hidden bg-white">
-      <PageHero
-        eyebrow="About Zenith"
-        title="Teaching that makes difficult concepts feel simple."
-        description="Zenith Learning is built for students who want more than routine tuition — students who want clarity, confidence and a structured path toward their goals."
-      />
+export const metadata: Metadata = { title: "About Us", description: "Discover the people and personalised mentoring approach behind Zenith Learning." };
 
-      <CompanyMetrics />
-      <CompanyStory />
-      <Methodology />
-      <AILearning />
-      <ImageMarquee />
-      <Team />
-      <CTASection
-        heading="Start with a diagnostic conversation"
-        description="Share the student's curriculum, grade and goals, and we'll recommend the right learning pathway."
-        buttonText="Explore programs"
-        buttonHref="/course"
-      />
-    </main>
-  );
+export default function AboutPage() {
+  return <main className="overflow-x-hidden bg-white">
+    <AboutExperience />
+    <CompanyMetrics />
+    <CompanyStory />
+    <Methodology />
+    <AILearning />
+    <ImageMarquee />
+    <Team />
+    <ConnectStrip />
+    <CTASection heading="Your next chapter starts with a conversation." description="Tell us where you are and where you want to go. Let's find a learning pathway that fits." buttonText="Let's talk" buttonHref="/contact-us" />
+  </main>;
 }

@@ -1,5 +1,5 @@
 import { Mail, Phone } from "lucide-react";
-import { RiInstagramLine, RiLinkedinFill, RiYoutubeFill } from "react-icons/ri";
+import { RiInstagramLine, RiLinkedinFill, RiTwitterXFill, RiYoutubeFill } from "react-icons/ri";
 
 import { Reveal } from "@/components/home/ui";
 import { BRAND } from "@/content/brand";
@@ -8,6 +8,7 @@ const SOCIALS = [
   { href: BRAND.social.linkedin, label: "LinkedIn", icon: RiLinkedinFill },
   { href: BRAND.social.instagram, label: "Instagram", icon: RiInstagramLine },
   { href: BRAND.social.youtube, label: "YouTube", icon: RiYoutubeFill },
+  { href: BRAND.social.x, label: "X / Twitter", icon: RiTwitterXFill },
 ];
 
 export default function ConnectStrip() {
@@ -33,6 +34,7 @@ export default function ConnectStrip() {
               </div>
 
               <div className="space-y-4">
+                <p className="text-xs font-bold uppercase tracking-widest text-accent">Admissions</p>
                 <a
                   href={`tel:${BRAND.admissionsPhone.replace(/\s/g, "")}`}
                   className="flex items-center gap-3 rounded-2xl bg-white/10 px-5 py-4 text-sm font-semibold transition hover:bg-white/20"
@@ -47,7 +49,15 @@ export default function ConnectStrip() {
                   <Mail size={18} className="shrink-0 text-accent" />
                   {BRAND.admissionsEmail}
                 </a>
-                <ul className="flex gap-3 pt-1">
+                <p className="pt-3 text-xs font-bold uppercase tracking-widest text-accent">Student &amp; parent support</p>
+                <a href={`tel:${BRAND.supportPhone.replace(/\s/g, "")}`} className="flex items-center gap-3 rounded-2xl bg-white/10 px-5 py-4 text-sm font-semibold transition hover:bg-white/20">
+                  <Phone size={18} className="shrink-0 text-accent" />{BRAND.supportPhone}
+                </a>
+                <a href={`mailto:${BRAND.supportEmail}`} className="flex items-center gap-3 break-all rounded-2xl bg-white/10 px-5 py-4 text-sm font-semibold transition hover:bg-white/20">
+                  <Mail size={18} className="shrink-0 text-accent" />{BRAND.supportEmail}
+                </a>
+                <p className="pt-3 text-xs font-bold uppercase tracking-widest text-accent">Follow Zenith</p>
+                <ul className="flex flex-wrap gap-3 pt-1">
                   {SOCIALS.map((social) => (
                     <li key={social.label}>
                       <a
@@ -55,9 +65,10 @@ export default function ConnectStrip() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={social.label}
-                        className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 transition hover:bg-accent hover:text-brand-start"
+                        className="flex min-h-11 items-center justify-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm transition hover:bg-accent hover:text-brand-start focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                       >
                         <social.icon size={18} />
+                        {social.label}
                       </a>
                     </li>
                   ))}

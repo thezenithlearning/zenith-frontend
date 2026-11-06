@@ -58,7 +58,13 @@ export default function LearningComparison() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <table className="mt-12 w-full table-fixed border-separate border-spacing-0 text-left">
+          <div className="mt-8 space-y-3 md:hidden">
+            {COMPARISON.map((row, index) => <details key={row.feature} open={index === 0 ? true : undefined} className="group overflow-hidden rounded-2xl border border-line bg-white">
+              <summary className="cursor-pointer px-5 py-5 text-sm font-bold text-brand-start focus-visible:outline-2 focus-visible:outline-brand-mid">{row.feature}</summary>
+              <div className="space-y-4 border-t border-line p-5"><div className="rounded-xl bg-brand-start p-4"><p className="text-xs font-bold uppercase tracking-wide text-accent">Zenith Learning</p><p className="mt-2 text-sm leading-6 text-white">{row.zenith}</p></div><div><p className="text-xs font-bold uppercase tracking-wide text-brand-mid">Ask other providers</p><p className="mt-2 text-sm leading-6 text-ink-muted">{row.other}</p></div></div>
+            </details>)}
+          </div>
+          <table className="mt-12 hidden w-full table-fixed border-separate border-spacing-0 text-left md:table">
             <caption className="sr-only">Zenith Learning benefits and questions to ask other learning providers</caption>
             <thead>
               <tr>

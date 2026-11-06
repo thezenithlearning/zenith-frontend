@@ -13,9 +13,10 @@ import Enquiry from "@/components/home/Enquiry";
 import HomeFaq from "@/components/home/HomeFaq";
 import HomePopup from "@/components/ads/HomePopup";
 import HomeSchema from "@/components/seo/HomeSchema";
+import { fetchPublic } from "@/lib/serverApi";
+import { stripHtml } from "@/features/content/types";
 import {
   HOME_DESCRIPTION,
-  HOME_FAQS,
   HOME_IMAGE,
   HOME_IMAGE_ALT,
   HOME_TITLE,
@@ -43,10 +44,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const records = await fetchPublic<{ question: string; answer: string }[]>("/faqs?scope=general&limit=5");
+  const faqs = (records ?? []).map(item => ({ question: item.question, answer: stripHtml(item.answer) }));
   return (
     <main className="overflow-x-hidden">
-      <HomeSchema />
+      <HomeSchema faqs={faqs} />
       <BannerSlider />
       <Credibility />
       <HomeCourses />
@@ -57,7 +60,7 @@ export default function Home() {
       <LearningComparison />
       <Testimonials />
       <DemoCta />
-      <HomeFaq items={HOME_FAQS} />
+      <HomeFaq items={faqs} />
       <Enquiry />
       <HomePopup />
     </main>

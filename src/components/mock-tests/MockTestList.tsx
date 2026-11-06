@@ -7,7 +7,9 @@ import { ArrowRight, ClipboardCheck, Clock, ListChecks, Search, Trophy, Users } 
 import { CardSkeletons, CategoryChips, EmptyState, PublicHero, PublicPager } from '@/components/public/PublicParts';
 import { useGetQuizzesQuery } from '@/features/quiz/api/quizApi';
 
-export default function MockTestList() {
+export default function MockTestList({ mode = 'mock' }: { mode?: 'practice' | 'mock' }) {
+  const practice = mode === 'practice';
+  const listPath = practice ? '/mcqs' : '/classwise-flash-card';
   const router = useRouter();
   const params = useSearchParams();
   const category = params.get('category') ?? '';
@@ -25,6 +27,7 @@ export default function MockTestList() {
   }, [search]);
 
   const { data, isLoading, isError } = useGetQuizzesQuery({
+    mode,
     page,
     limit: 18,
     ...(category ? { category } : {}),
@@ -34,23 +37,23 @@ export default function MockTestList() {
 
   const setCategory = (slug: string) => {
     setPage(1);
-    router.replace(slug ? `/classwise-flash-card?category=${encodeURIComponent(slug)}` : '/classwise-flash-card', { scroll: false });
+    router.replace(slug ? `${listPath}?category=${encodeURIComponent(slug)}` : listPath, { scroll: false });
   };
 
   return (
     <main className="bg-slate-50">
       <PublicHero
-        eyebrow="Mock test series"
-        title="Practice with timed mock tests"
-        text="Real exam-style MCQ tests with marking schemes, a live timer and instant score analysis."
+        eyebrow={practice ? "Free MCQ practice" : "Mock test series"}
+        title={practice ? "Build confidence, one question at a time" : "Practice with timed mock tests"}
+        text={practice ? "Explore untimed subject practice with answer explanations after submission." : "Exam-style MCQ tests with marking schemes, a live timer and score analysis."}
       >
         <div className="relative mx-auto max-w-xl">
           <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search mock tests or series…"
-            aria-label="Search mock tests"
+            placeholder={practice ? "Search practice sets…" : "Search mock tests or series…"}
+            aria-label={practice ? "Search MCQ practice" : "Search mock tests"}
             className="w-full rounded-2xl border-0 bg-white py-4 pl-12 pr-4 text-sm text-slate-900 shadow-xl outline-none ring-2 ring-transparent focus:ring-[#f2c75c]"
           />
         </div>
@@ -63,9 +66,9 @@ export default function MockTestList() {
           {isLoading ? (
             <CardSkeletons />
           ) : isError ? (
-            <EmptyState title="Couldn't load mock tests" text="Please refresh the page or try again shortly." />
+            <EmptyState title="Couldn't load practice content" text="Please refresh the page or try again shortly." />
           ) : quizzes.length === 0 ? (
-            <EmptyState title="No mock tests yet" text="New tests for this category are coming soon. Check back shortly." />
+            <EmptyState title={practice ? "No practice sets yet" : "No mock tests yet"} text="New content for this category is coming soon." />
           ) : (
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {quizzes.map((q) => (

@@ -171,6 +171,7 @@ export interface IQuizAttempt {
 }
 
 export interface QuizQuery {
+  mode?: 'practice' | 'mock';
   category?: string;
   search?: string;
   status?: 'draft' | 'published' | 'scheduled';

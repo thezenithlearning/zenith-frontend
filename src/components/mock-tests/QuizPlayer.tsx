@@ -189,8 +189,8 @@ function Player({ quiz }: { quiz: IPublicQuiz }) {
     return (
       <main className="bg-slate-50 px-4 py-10 sm:py-16">
         <div className="mx-auto max-w-3xl">
-          <Link href="/classwise-flash-card" className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500 hover:text-[#2147a8]">
-            <ArrowLeft className="h-4 w-4" /> All mock tests
+          <Link href={quiz.durationMinutes ? "/classwise-flash-card" : "/mcqs"} className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500 hover:text-[#2147a8]">
+            <ArrowLeft className="h-4 w-4" /> {quiz.durationMinutes ? "All mock tests" : "All MCQ practice"}
           </Link>
           <div className="mt-4 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-blue-900/5">
             <div className="bg-[#0a1a40] px-6 py-8 text-white sm:px-10">
@@ -585,10 +585,10 @@ function ResultView({ quiz, result, onRetake }: { quiz: IPublicQuiz; result: Qui
               <RotateCcw className="h-4 w-4" /> Retake test
             </button>
             <Link
-              href="/classwise-flash-card"
+              href={quiz.durationMinutes ? "/classwise-flash-card" : "/mcqs"}
               className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50"
             >
-              More mock tests
+              {quiz.durationMinutes ? "More mock tests" : "More MCQ practice"}
             </Link>
           </div>
         </div>

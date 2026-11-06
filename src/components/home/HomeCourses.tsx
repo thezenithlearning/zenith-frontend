@@ -1,97 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import CourseCard, { type CourseCardData } from "@/components/course/CourseCard";
+import CourseCard from "@/components/course/CourseCard";
+import { useGetCoursesQuery } from "@/features/course/api/courseApi";
 
 import { Reveal } from "./ui";
 
-/** Placeholder cards until the home page is wired to the live course list. */
-const COURSES: CourseCardData[] = [
-  {
-    _id: "dummy-1",
-    bannerImage: { url: "/courses/mathematics.svg", altText: "Mathematics graph illustration" },
-    title: "IB Mathematics AA HL",
-    slug: "ib-mathematics-aa-hl",
-    category: "IB",
-    shortDescription: "Concept-first coaching for IB Analysis & Approaches, with exam-style problem practice.",
-    price: 24999,
-    discountedPrice: 19999,
-    durationWeeks: 24,
-    format: "Live online",
-    level: "advanced",
-    status: "active",
-  },
-  {
-    _id: "dummy-2",
-    bannerImage: { url: "/courses/physics.svg", altText: "Physics atom illustration" },
-    title: "IGCSE Physics",
-    slug: "igcse-physics",
-    category: "IGCSE",
-    shortDescription: "Build strong fundamentals and exam technique across the full IGCSE Physics syllabus.",
-    price: 17999,
-    discountedPrice: 14999,
-    durationWeeks: 20,
-    format: "Live online",
-    level: "intermediate",
-    status: "active",
-  },
-  {
-    _id: "dummy-3",
-    bannerImage: { url: "/courses/science.svg", altText: "Science laboratory flask illustration" },
-    title: "CBSE Class 10 Science",
-    slug: "cbse-class-10-science",
-    category: "CBSE",
-    shortDescription: "Chapter-wise teaching, NCERT mastery and board-pattern practice for Class 10.",
-    price: 9999,
-    durationWeeks: 16,
-    format: "Live online",
-    level: "intermediate",
-    status: "active",
-  },
-  {
-    _id: "dummy-4",
-    bannerImage: { url: "/courses/engineering.svg", altText: "Geometric engineering illustration" },
-    title: "JEE Main Foundation",
-    slug: "jee-main-foundation",
-    category: "JEE",
-    shortDescription: "Strengthen Physics, Chemistry and Maths concepts with structured weekly tests.",
-    price: 34999,
-    discountedPrice: 29999,
-    durationWeeks: 40,
-    format: "Live online",
-    level: "advanced",
-    status: "active",
-  },
-  {
-    _id: "dummy-5",
-    bannerImage: { url: "/courses/biology.svg", altText: "Biology DNA illustration" },
-    title: "NEET Biology Crash Course",
-    slug: "neet-biology-crash-course",
-    category: "NEET",
-    shortDescription: "High-yield revision, diagrams and MCQ drills to lock in NEET Biology marks.",
-    price: 12999,
-    discountedPrice: 9999,
-    durationWeeks: 8,
-    format: "Live online",
-    level: "all-levels",
-    status: "active",
-  },
-  {
-    _id: "dummy-6",
-    bannerImage: { url: "/courses/sat.svg", altText: "SAT study book illustration" },
-    title: "SAT Maths & English",
-    slug: "sat-maths-english",
-    category: "SAT",
-    shortDescription: "Targeted SAT preparation with adaptive practice and full-length mock tests.",
-    price: 19999,
-    durationWeeks: 12,
-    format: "Live online",
-    level: "intermediate",
-    status: "active",
-  },
-];
-
 export default function HomeCourses() {
+  const { data, isLoading, isError, refetch } = useGetCoursesQuery({ status: "active", limit: 6, page: 1 });
+  const courses = data?.data ?? [];
   return (
     <section id="courses" className="bg-surface-muted pb-16 pt-8 sm:pb-24 sm:pt-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -108,7 +27,10 @@ export default function HomeCourses() {
         </Reveal>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {COURSES.map((course, i) => (
+          {isLoading && Array.from({ length: 3 }, (_, i) => <div key={i} className="h-96 animate-pulse rounded-3xl bg-brand-start-soft" aria-label="Loading courses" />)}
+          {isError && <div role="alert" className="col-span-full py-8 text-center text-ink-muted">We couldn’t load the courses. <button type="button" onClick={() => refetch()} className="font-semibold text-brand-mid underline">Try again</button></div>}
+          {!isLoading && !isError && courses.length === 0 && <p className="col-span-full py-8 text-center text-ink-muted">New courses are coming soon.</p>}
+          {courses.map((course, i) => (
             <Reveal key={course._id} delay={0.05 * (i % 3)} className="h-full">
               <CourseCard course={course} />
             </Reveal>

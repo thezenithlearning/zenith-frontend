@@ -10,6 +10,8 @@ const ROUTES = [
   "/course",
   "/blog",
   "/classwise-flash-card",
+  "/mcqs",
+  "/demo-videos",
   "/pyqs",
   "/qna",
   "/faqs",

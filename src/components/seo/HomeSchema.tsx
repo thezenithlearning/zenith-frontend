@@ -1,10 +1,11 @@
-import { HOME_FAQS, HOME_IMAGE, HOME_TITLE, HOME_URL } from "@/data/homeSeo";
+import { HOME_IMAGE, HOME_TITLE, HOME_URL } from "@/data/homeSeo";
 import { BRAND } from "@/content/brand";
 
 const DESCRIPTION =
   "Personalised academic mentoring across international curricula, school academics and competitive exams, with live classes, structured practice and continuous progress tracking.";
 
-const schemas = [
+type Faq = { question: string; answer: string };
+const buildSchemas = (faqs: Faq[]) => [
   {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -57,7 +58,7 @@ const schemas = [
     "@type": "FAQPage",
     "@id": `${HOME_URL}/#faq`,
     url: `${HOME_URL}/#faq`,
-    mainEntity: HOME_FAQS.map(({ question, answer }) => ({
+    mainEntity: faqs.map(({ question, answer }) => ({
       "@type": "Question",
       name: question,
       acceptedAnswer: { "@type": "Answer", text: answer },
@@ -65,8 +66,8 @@ const schemas = [
   },
 ];
 
-export default function HomeSchema() {
-  return schemas.map((schema) => (
+export default function HomeSchema({ faqs = [] }: { faqs?: Faq[] }) {
+  return buildSchemas(faqs).filter(schema => schema["@type"] !== "FAQPage" || faqs.length > 0).map((schema) => (
     <script
       key={schema["@id"]}
       id={`home-${schema["@type"].toLowerCase()}-schema`}

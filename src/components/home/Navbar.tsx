@@ -27,7 +27,8 @@ const MORE_LINKS: readonly MenuLink[] = [
 const RESOURCE_LINKS: readonly MenuLink[] = [
   { href: "/faqs", label: "FAQ", description: "Answers to your questions", icon: CircleHelp },
   { href: "/classwise-flash-card", label: "Mock Tests", description: "Practise with timed tests", icon: ClipboardCheck },
-  { href: null, label: "Demo Videos", description: "Coming soon", icon: PlayCircle },
+  { href: "/demo-videos", label: "Demo Videos", description: "Watch short learning demos", icon: PlayCircle },
+  { href: "/mcqs", label: "MCQ Practice", description: "Build confidence at your own pace", icon: ClipboardCheck },
   { href: "/pyqs", label: "PYQs", description: "Explore previous years’ papers", icon: FileText },
 ];
 

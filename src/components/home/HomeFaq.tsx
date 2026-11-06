@@ -22,6 +22,7 @@ export default function HomeFaq({ items }: { items: readonly Faq[] }) {
         </Reveal>
 
         <ul className="divide-y divide-slate-200 border-y border-slate-200">
+          {items.length === 0 && <li className="py-6 text-ink-muted">Questions are being updated. Please contact our team for help.</li>}
           {items.map((item, i) => {
             const isOpen = open === i;
             return (

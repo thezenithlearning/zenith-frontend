@@ -531,3 +531,10 @@ article {
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
 }
+
+/* Image rows: same endless loop, per-row direction and speed. */
+.marquee-track-reverse {
+  animation-direction: reverse;
+}
+.marquee-slow { animation-duration: 60s; }
+.marquee-fast { animation-duration: 36s; }

@@ -1,8 +1,13 @@
 import { Clock, Mail, MessageCircle } from "lucide-react";
 
+import AdmissionSteps from "@/components/contact/AdmissionSteps";
+import ConnectStrip from "@/components/contact/ConnectStrip";
+import OfficeLocation from "@/components/contact/OfficeLocation";
 import Enquiry from "@/components/home/Enquiry";
+import HomeFaq from "@/components/home/HomeFaq";
 import PageHero from "@/components/home/PageHero";
 import { BRAND } from "@/content/brand";
+import { CONTACT_FAQS } from "@/content/contact";
 
 const CHANNELS = [
   {
@@ -63,7 +68,11 @@ export default function ContactPage() {
         </div>
       </section>
 
+      <OfficeLocation />
+      <AdmissionSteps />
       <Enquiry />
+      <HomeFaq items={CONTACT_FAQS} />
+      <ConnectStrip />
     </main>
   );
 }

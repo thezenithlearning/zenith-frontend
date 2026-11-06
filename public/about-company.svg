@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 720" fill="none" role="img" aria-label="A learning path climbing to a summit">
+  <defs>
+    <linearGradient id="sky" x1="320" y1="0" x2="320" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0c1d4a"/>
+      <stop offset="0.6" stop-color="#2147a8"/>
+      <stop offset="1" stop-color="#3b6fe0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(430 190) rotate(90) scale(210)">
+      <stop stop-color="#e8b53a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#e8b53a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="far" x1="0" y1="380" x2="0" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2d58bd"/>
+      <stop offset="1" stop-color="#1a3a8c"/>
+    </linearGradient>
+    <linearGradient id="mid" x1="0" y1="330" x2="0" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1a3a8c"/>
+      <stop offset="1" stop-color="#0f2766"/>
+    </linearGradient>
+    <linearGradient id="near" x1="0" y1="420" x2="0" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f2766"/>
+      <stop offset="1" stop-color="#0a1a47"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="640" height="720" fill="url(#sky)"/>
+  <circle cx="430" cy="190" r="210" fill="url(#glow)"/>
+  <circle cx="430" cy="190" r="58" fill="#e8b53a"/>
+  <circle cx="430" cy="190" r="58" stroke="#fdf4dc" stroke-opacity="0.5" stroke-width="2"/>
+
+  <!-- stars -->
+  <g fill="#ffffff" fill-opacity="0.7">
+    <circle cx="70" cy="80" r="2.2"/><circle cx="150" cy="150" r="1.6"/><circle cx="240" cy="70" r="2"/>
+    <circle cx="320" cy="140" r="1.4"/><circle cx="560" cy="90" r="2.2"/><circle cx="600" cy="220" r="1.5"/>
+    <circle cx="110" cy="260" r="1.5"/><circle cx="520" cy="300" r="1.4"/><circle cx="40" cy="190" r="1.4"/>
+  </g>
+
+  <!-- far range -->
+  <path d="M0 470 L90 400 L160 450 L250 360 L340 440 L430 380 L520 440 L640 370 V720 H0 Z" fill="url(#far)" fill-opacity="0.85"/>
+  <!-- main summit -->
+  <path d="M-20 560 L150 450 L260 520 L430 190 L600 470 L660 430 V720 H-20 Z" fill="url(#mid)"/>
+  <path d="M430 190 L470 262 L440 250 L418 290 L396 246 L372 262 Z" fill="#ffffff" fill-opacity="0.9"/>
+  <!-- foreground -->
+  <path d="M0 640 L120 560 L240 620 L360 540 L500 620 L640 560 V720 H0 Z" fill="url(#near)"/>
+
+  <!-- learning path -->
+  <path d="M96 676 C 150 640, 230 650, 250 600 C 270 548, 170 540, 210 492 C 250 446, 330 470, 352 420 C 372 376, 330 340, 380 300 C 400 284, 418 262, 430 212"
+        stroke="#e8b53a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 12"/>
+  <g fill="#fdf4dc" stroke="#e8b53a" stroke-width="3">
+    <circle cx="96" cy="676" r="9"/><circle cx="250" cy="600" r="9"/>
+    <circle cx="210" cy="492" r="9"/><circle cx="352" cy="420" r="9"/><circle cx="380" cy="300" r="9"/>
+  </g>
+
+  <!-- summit flag -->
+  <path d="M430 212 V150" stroke="#fdf4dc" stroke-width="4" stroke-linecap="round"/>
+  <path d="M430 150 L478 166 L430 184 Z" fill="#e8b53a"/>
+</svg>

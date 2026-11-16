@@ -4,6 +4,8 @@ import BannerSlider from "@/components/home/BannerSlider";
 import HomeResources from "@/components/home/HomeResources";
 import Credibility from "@/components/home/Credibility";
 import HomeCourses from "@/components/home/HomeCourses";
+import KalpVriksh from "@/components/home/KalpVriksh";
+import HouseRules from "@/components/home/HouseRules";
 import DemoCta from "@/components/home/DemoCta";
 import CityPresence from "@/components/home/CityPresence";
 import Methodology from "@/components/home/Methodology";
@@ -54,12 +56,14 @@ export default async function Home() {
       <HomeSchema faqs={faqs} />
       <BannerSlider />
       <Credibility />
+      <KalpVriksh />
       <HomeCourses />
       <DemoCta />
       <Methodology />
       <AILearning />
       <LearningComparison />
       <Testimonials />
+      <HouseRules />
       <DemoCta />
       <HomeResources />
       <CityPresence />

@@ -64,7 +64,7 @@ export default function BannerSlider() {
     <section
       aria-roledescription="carousel"
       aria-label="Featured banners"
-      className="relative w-full touch-pan-y select-none overflow-hidden bg-brand-start"
+      className="relative w-full touch-pan-y select-none overflow-hidden"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setFocused(true)}
@@ -144,7 +144,7 @@ export default function BannerSlider() {
           >
             <ChevronRight size={20} />
           </button>
-          <div className="flex min-h-12 items-center justify-center gap-0 bg-brand-start sm:absolute sm:inset-x-0 sm:bottom-2 sm:mx-auto sm:w-fit sm:rounded-full sm:bg-brand-start/80 sm:px-2">
+          <div className="absolute inset-x-0 bottom-1 mx-auto flex w-fit items-center justify-center gap-0 rounded-full bg-black/35 px-1 sm:bottom-2 sm:bg-brand-start/80 sm:px-2">
             {SLIDES.map((slide, i) => (
               <button
                 key={slide.src}
@@ -152,10 +152,10 @@ export default function BannerSlider() {
                 aria-label={`Go to banner ${i + 1}`}
                 aria-current={i === active}
                 onClick={() => setPos(i + 1)}
-                className="flex h-11 w-9 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-accent"
-              ><span className={`h-2 rounded-full transition-all ${i === active ? "w-6 bg-accent" : "w-2 bg-white/60"}`} /></button>
+                className="flex h-6 w-5 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-accent sm:h-11 sm:w-9"
+              ><span className={`h-1.5 rounded-full transition-all sm:h-2 ${i === active ? "w-4 bg-accent sm:w-6" : "w-1.5 bg-white/70 sm:w-2"}`} /></button>
             ))}
-            {!reduced && <button type="button" aria-label={stopped ? "Play banners" : "Pause banners"} onClick={() => setStopped(value => !value)} className="flex h-11 w-11 items-center justify-center rounded-full text-white hover:bg-white/15">{stopped ? <Play size={16} /> : <Pause size={16} />}</button>}
+            {!reduced && <button type="button" aria-label={stopped ? "Play banners" : "Pause banners"} onClick={() => setStopped(value => !value)} className="flex h-6 w-6 items-center justify-center rounded-full text-white hover:bg-white/15 sm:h-11 sm:w-11">{stopped ? <Play className="h-3 w-3 sm:h-4 sm:w-4" /> : <Pause className="h-3 w-3 sm:h-4 sm:w-4" />}</button>}
           </div>
         </>
       )}

@@ -9,11 +9,12 @@ type Slide = { src: string; alt: string; href?: string };
 
 /** Replace these files in /public/banners (or edit the list) to change the home slider. */
 const SLIDES: Slide[] = [
-  { src: "https://media.writed.in/uploads/slide1--5d574f41-7a6f-44a6-91c7-e9715ef1fa98.webp", alt: "Zenith Learning banner 1", href: "/course" },
-  { src: "https://media.writed.in/uploads/slide2--510904bc-0d7f-4a91-807d-ff4332bfb646.webp", alt: "Zenith Learning banner 2", href: "/course" },
-  { src: "https://media.writed.in/uploads/slide3--c3ffafda-8675-4ed9-8285-909ed05a4ce5.webp", alt: "Zenith Learning banner 3", href: "/course" },
-  { src: "https://media.writed.in/uploads/slide6--33e0919b-4c4e-4363-9102-53e38316feaf.webp", alt: "Zenith Learning banner 4", href: "/course" },
-  { src: "https://media.writed.in/uploads/slide7--fd24f7be-2e29-4248-ba53-f38297c0a53b.webp", alt: "Zenith Learning banner 5", href: "/course" },
+  { src: "https://media.thezenithlearning.com/uploads/whatsapp-image-2026-10-10-at-12455-pm-removebg-preview--3d6ee3f6-9f1f-4d68-8f6e-0b28254a8c71.png", alt: "Zenith Learning", href: "/course" },
+  { src: "https://media.thezenithlearning.com/uploads/english-that-builds-insight--51d40800-4bdd-488a-934e-1389defd27d7.png", alt: "English that builds insight", href: "/course" },
+  { src: "https://media.thezenithlearning.com/uploads/ib-hero-banner-3840x960--e41dc8f7-77b0-4eef-9c67-9644702b5aa7.png", alt: "IB tuition at Zenith Learning", href: "/course" },
+  { src: "https://media.thezenithlearning.com/uploads/igcse-expert-tuition-banner--7501c2a9-7413-42cc-b8f3-7de3df8a8cef.png", alt: "IGCSE expert tuition", href: "/course" },
+  { src: "https://media.thezenithlearning.com/uploads/o-as-a-levels-hero-banner-3840x960--66157e0e-a7a6-43c0-9459-4aec45ffd2c7.png", alt: "O Level and AS/A Level tuition", href: "/course" },
+  { src: "https://media.thezenithlearning.com/uploads/tailored-learning-brighter-futures--26010f0d-f842-4586-8c7d-2f5db76f5901.png", alt: "Tailored learning, brighter futures", href: "/course" },
 ];
 
 const INTERVAL_MS = 4000;

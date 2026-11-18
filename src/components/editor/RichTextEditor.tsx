@@ -29,7 +29,6 @@ interface RichTextEditorProps {
   onChange: (data: string) => void;
   placeholder?: string;
 }
-
 // Resolve the backend base URL the same way services/baseApi.ts does.
 const resolveApiBaseUrl = (): string => {
   const raw = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1")
@@ -37,6 +36,7 @@ const resolveApiBaseUrl = (): string => {
     .replace(/\/+$/, "");
   return raw.endsWith("/api/v1") ? raw : `${raw}/api/v1`;
 };
+
 
 const checkForRawHtml = (html: string) =>
   /<(iframe|video|embed|object|figure\s+class="media"|audio)/i.test(html);

@@ -12,6 +12,7 @@ interface SitemapApiResponse {
 
 const SITE_URL = "https://thezenithlearning.com";
 
+
 // Fetch the base backend API URL, default to localhost during development
 const resolveApiBaseUrl = (): string => {
   const raw = (

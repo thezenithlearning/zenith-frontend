@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
-
 // Resolve the API base URL
 const resolveApiBaseUrl = (): string => {
   const raw = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1')
@@ -8,6 +7,7 @@ const resolveApiBaseUrl = (): string => {
     .replace(/\/+$/, '');
   return raw.endsWith('/api/v1') ? raw : `${raw}/api/v1`;
 };
+
 
 export const API_BASE_URL = resolveApiBaseUrl();
 

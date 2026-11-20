@@ -8,7 +8,8 @@ import { CheckCircle2, ChevronDown, Loader2, Search, X } from 'lucide-react';
 import { useGetCoursesQuery } from '@/features/course/api/courseApi';
 import { useCreateLeadMutation } from '@/features/lead/api/leadApi';
 
-type LeadModalContextValue = { open: (source?: string) => void };
+/** `course` pre-selects the program (e.g. when opened from a course page). */
+type LeadModalContextValue = { open: (source?: string, course?: string) => void };
 
 const LeadModalContext = createContext<LeadModalContextValue>({ open: () => undefined });
 
@@ -26,9 +27,11 @@ const errorMessageOf = (error: unknown) => {
 export function LeadModalProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [source, setSource] = useState('start-learning');
+  const [initialCourse, setInitialCourse] = useState('');
 
-  const open = useCallback((nextSource = 'start-learning') => {
+  const open = useCallback((nextSource = 'start-learning', course = '') => {
     setSource(nextSource);
+    setInitialCourse(course);
     setIsOpen(true);
   }, []);
   const value = useMemo(() => ({ open }), [open]);
@@ -36,12 +39,12 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
   return (
     <LeadModalContext.Provider value={value}>
       {children}
-      {isOpen && <LeadModal source={source} onClose={() => setIsOpen(false)} />}
+      {isOpen && <LeadModal source={source} initialCourse={initialCourse} onClose={() => setIsOpen(false)} />}
     </LeadModalContext.Provider>
   );
 }
 
-function LeadModal({ source, onClose }: { source: string; onClose: () => void }) {
+function LeadModal({ source, initialCourse, onClose }: { source: string; initialCourse: string; onClose: () => void }) {
   const pathname = usePathname();
   const titleId = useId();
   const listId = useId();
@@ -59,8 +62,8 @@ function LeadModal({ source, onClose }: { source: string; onClose: () => void })
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
-  const [course, setCourse] = useState('');
-  const [courseQuery, setCourseQuery] = useState('');
+  const [course, setCourse] = useState(initialCourse);
+  const [courseQuery, setCourseQuery] = useState(initialCourse);
   const [courseOpen, setCourseOpen] = useState(false);
   const [error, setError] = useState('');
   const [done, setDone] = useState(false);

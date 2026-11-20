@@ -8,6 +8,7 @@ import Link from "next/link";
 
 import { useCourse } from "@/features/course/hooks/useCourse";
 import ContentPreview from "@/components/editor/ContentPreview";
+import { useLeadModal } from "@/components/lead/LeadModal";
 import TestimonialCarousel from "@/components/shared/TestimonialCarousel";
 
 import type {
@@ -21,7 +22,6 @@ import {
   ArrowRight,
   Check,
   Clock,
-  CheckCircle,
   ChevronDown,
   Loader2,
   ShieldCheck,
@@ -232,8 +232,7 @@ export default function CourseDetailPage() {
   const [expandedCurriculum, setExpandedCurriculum] =
     useState<number | null>(0);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [isEnrolling, setIsEnrolling] = useState(false);
-  const [enrollSuccess, setEnrollSuccess] = useState(false);
+  const { open: openLeadForm } = useLeadModal();
   const [pastHero, setPastHero] = useState(false);
 
   const heroSentinelRef = useRef<HTMLDivElement | null>(null);
@@ -401,23 +400,12 @@ export default function CourseDetailPage() {
       return;
     }
 
-    setIsEnrolling(true);
-
-    window.setTimeout(() => {
-      setIsEnrolling(false);
-      setEnrollSuccess(true);
-
-      window.setTimeout(() => {
-        setEnrollSuccess(false);
-      }, 3000);
-    }, 1200);
+    openLeadForm("course-enroll", course.title);
   };
 
   const getActionLabel = (): string => {
     if (courseStatus === "upcoming") return "Coming Soon";
     if (courseStatus === "ended") return "Course Ended";
-    if (isEnrolling) return "Enrolling...";
-    if (enrollSuccess) return "Enrolled!";
     return purchaseUrl ? "Buy Now" : "Enroll Now";
   };
 
@@ -425,11 +413,7 @@ export default function CourseDetailPage() {
 
   const actionContent = (
     <>
-      {isEnrolling ? (
-        <Loader2 className="h-4 w-4 animate-spin" />
-      ) : enrollSuccess ? (
-        <CheckCircle className="h-4 w-4" />
-      ) : courseStatus === "upcoming" ? (
+      {courseStatus === "upcoming" ? (
         <CalendarClock className="h-4 w-4" />
       ) : courseStatus === "ended" ? (
         <XCircle className="h-4 w-4" />
@@ -454,7 +438,7 @@ export default function CourseDetailPage() {
       id="course-slug-detail-enroll-now-button"
       type="button"
       onClick={handleEnrollNow}
-      disabled={!canEnroll || isEnrolling}
+      disabled={!canEnroll}
       className={`inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-semibold ${primaryButtonClass}`}
     >
       {actionContent}
@@ -522,7 +506,7 @@ export default function CourseDetailPage() {
                 id="course-detail-sticky-top-enroll-now-button"
                 type="button"
                 onClick={handleEnrollNow}
-                disabled={!canEnroll || isEnrolling}
+                disabled={!canEnroll}
                 className={`inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold ${primaryButtonClass}`}
               >
                 {actionLabel}
@@ -639,11 +623,6 @@ export default function CourseDetailPage() {
                 </div>
                 {ctaButton}
               </div>
-
-              <p className="mt-4 text-xs text-gray-400">
-                Secure checkout · Lifetime access on any device
-                {hasCertificate && " · Certificate on completion"}
-              </p>
             </div>
 
             <div className="relative mx-auto w-full max-w-md lg:max-w-none">
@@ -1260,7 +1239,7 @@ export default function CourseDetailPage() {
             id="course-detail-sticky-enroll-now-button"
             type="button"
             onClick={handleEnrollNow}
-            disabled={!canEnroll || isEnrolling}
+            disabled={!canEnroll}
             className={`inline-flex items-center gap-2 px-6 py-2.5 font-semibold ${primaryButtonClass}`}
           >
             {actionContent}

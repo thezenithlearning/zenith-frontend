@@ -79,8 +79,8 @@ const PrivacyPolicyContent: React.FC = () => {
         <h2 className={H2}>Contact</h2>
         <p className="leading-7 text-slate-700">
           To access, correct or delete personal information, or to raise a concern, email us at{" "}
-          <a className="font-semibold text-brand-mid underline" href={`mailto:${BRAND.supportEmail}`}>
-            {BRAND.supportEmail}
+          <a className="font-semibold text-brand-mid underline" href={`mailto:${BRAND.email}`}>
+            {BRAND.email}
           </a>.
         </p>
       </section>

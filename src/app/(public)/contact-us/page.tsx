@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowUpRight, Clock3, Globe2, Mail, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Clock3, Globe2, Mail, MessageCircle, Phone } from "lucide-react";
 import AdmissionSteps from "@/components/contact/AdmissionSteps";
 import OfficeLocation from "@/components/contact/OfficeLocation";
 import ConnectStrip from "@/components/contact/ConnectStrip";
@@ -22,8 +22,8 @@ export default function ContactPage() {
     <Enquiry variant="contact" />
     <section className="px-5 py-16 sm:px-8">
       <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[.8fr_1fr_1fr]">
-        <div><p className="text-xs font-bold uppercase tracking-widest text-brand-mid">A direct connection</p><h2 className="font-display mt-4 text-3xl text-brand-start">More comfortable<br />with email?</h2></div>
-        {[{ title: "New to Zenith?", text: "Courses, learning pathways and getting started.", email: BRAND.admissionsEmail }, { title: "Already learning with us?", text: "Help for existing students and parents.", email: BRAND.supportEmail }].map(item => <a key={item.title} href={`mailto:${item.email}`} className="group min-w-0 rounded-2xl border border-slate-200 p-6 transition hover:border-brand-mid hover:bg-brand-start-soft focus-visible:outline-2 focus-visible:outline-brand-mid"><div className="flex items-center justify-between text-brand-mid"><Mail size={22} /><ArrowUpRight size={20} className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" /></div><h3 className="mt-5 font-semibold text-brand-start">{item.title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{item.text}</p><p className="mt-4 break-all text-sm font-semibold text-brand-mid">{item.email}</p></a>)}
+        <div><p className="text-xs font-bold uppercase tracking-widest text-brand-mid">A direct connection</p><h2 className="font-display mt-4 text-3xl text-brand-start">Prefer to reach<br />us directly?</h2></div>
+        {[{ title: "Write to us", text: "Courses, learning pathways, or help for existing students and parents.", value: BRAND.email, href: `mailto:${BRAND.email}`, icon: Mail }, { title: "Call or WhatsApp", text: "Talk to our team about your goals and the right pathway.", value: BRAND.phone, href: `tel:${BRAND.phone.replace(/\s/g, "")}`, icon: Phone }].map(item => <a key={item.title} href={item.href} className="group min-w-0 rounded-2xl border border-slate-200 p-6 transition hover:border-brand-mid hover:bg-brand-start-soft focus-visible:outline-2 focus-visible:outline-brand-mid"><div className="flex items-center justify-between text-brand-mid"><item.icon size={22} /><ArrowUpRight size={20} className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" /></div><h3 className="mt-5 font-semibold text-brand-start">{item.title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{item.text}</p><p className="mt-4 break-all text-sm font-semibold text-brand-mid">{item.value}</p></a>)}
       </div>
     </section>
     <AdmissionSteps />

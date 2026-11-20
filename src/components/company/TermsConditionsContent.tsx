@@ -59,8 +59,8 @@ const TermsConditionsContent: React.FC = () => {
         <h2 className={H2}>Contact</h2>
         <p className={P}>
           Questions about these terms? Email{" "}
-          <a className="font-semibold text-brand-mid underline" href={`mailto:${BRAND.supportEmail}`}>
-            {BRAND.supportEmail}
+          <a className="font-semibold text-brand-mid underline" href={`mailto:${BRAND.email}`}>
+            {BRAND.email}
           </a>.
         </p>
       </section>

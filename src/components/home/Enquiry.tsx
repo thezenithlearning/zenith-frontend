@@ -84,8 +84,8 @@ export default function Enquiry({ variant = "default" }: { variant?: "default" |
           </div>}
           <p className="mt-8 text-sm text-blue-100/60">
             Prefer email? Write to{" "}
-            <a className="font-semibold text-white underline-offset-4 hover:underline" href={`mailto:${BRAND.admissionsEmail}`}>
-              {BRAND.admissionsEmail}
+            <a className="font-semibold text-white underline-offset-4 hover:underline" href={`mailto:${BRAND.email}`}>
+              {BRAND.email}
             </a>
           </p>
         </Reveal>

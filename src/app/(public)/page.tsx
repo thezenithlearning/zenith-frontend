@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import BannerSlider from "@/components/home/BannerSlider";
+import ZenithMindset from "@/components/home/ZenithMindset";
+import WisdomStatement from "@/components/home/WisdomStatement";
 import HomeResources from "@/components/home/HomeResources";
 import Credibility from "@/components/home/Credibility";
 import HomeCourses from "@/components/home/HomeCourses";
@@ -59,7 +61,9 @@ export default async function Home() {
       <KalpVriksh />
       <HomeCourses />
       <DemoCta />
+      <WisdomStatement />
       <Methodology />
+      <ZenithMindset />
       <AILearning />
       <LearningComparison />
       <Testimonials />

@@ -57,6 +57,7 @@ const MILESTONES: { eyebrow: string; title: string; lines: { tag: Tag; text: str
 const FOUNDERS: {
   name: string;
   initial: string;
+  photo: string;
   role: string;
   headline: string;
   tone: string;
@@ -65,6 +66,7 @@ const FOUNDERS: {
   {
     name: "Yamini",
     initial: "Y",
+    photo: "https://media.thezenithlearning.com/uploads/yamini-man--67655092-1fdd-4729-abfb-4145d6fe46b8.jpeg",
     role: "Co-founder, educator, and mentor",
     headline: "Helping every child feel understood",
     tone: "bg-brand-start-soft text-brand-mid",
@@ -87,6 +89,7 @@ const FOUNDERS: {
   {
     name: "Rishabh",
     initial: "R",
+    photo: "https://media.thezenithlearning.com/uploads/rishab--e3846604-974f-444c-92b2-aed27e424f40.jpeg",
     role: "Co-founder, educator, and content strategist",
     headline: "A storyteller who builds learning paths",
     tone: "bg-accent-soft text-accent-dark",
@@ -323,10 +326,17 @@ export default function AboutStory() {
               <Reveal key={f.name} delay={i * 0.08}>
                 <article className="grid gap-8 rounded-3xl border border-line p-6 shadow-sm sm:p-8 md:grid-cols-[13rem_minmax(0,1fr)]">
                   <div>
-                    <div className={`flex aspect-[4/5] w-full max-w-52 items-center justify-center rounded-2xl ${f.tone}`}>
-                      <span aria-hidden className="font-display text-7xl font-medium">
+                    <div className={`relative aspect-[4/5] w-full max-w-52 overflow-hidden rounded-2xl ring-1 ring-line ${f.tone}`}>
+                      <span aria-hidden className="font-display absolute inset-0 flex items-center justify-center text-7xl font-medium">
                         {f.initial}
                       </span>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={f.photo}
+                        alt={`${f.name}, ${f.role}`}
+                        loading="lazy"
+                        className="relative h-full w-full object-cover object-top"
+                      />
                     </div>
                     <p className="mt-4 text-lg font-semibold text-brand-start">{f.name}</p>
                     <p className="text-sm text-ink-muted">{f.role}</p>

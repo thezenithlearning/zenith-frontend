@@ -9,9 +9,9 @@ type Slide = { src: string; alt: string; href?: string };
 
 /** Replace these files in /public/banners (or edit the list) to change the home slider. */
 const SLIDES: Slide[] = [
-  { src: "https://media.thezenithlearning.com/uploads/whatsapp-image-2026-10-10-at-12455-pm-removebg-preview--3d6ee3f6-9f1f-4d68-8f6e-0b28254a8c71.png", alt: "Zenith Learning", href: "/course" },
+  { src: "https://media.thezenithlearning.com/uploads/o-as-a-levels-hero-banner-fixed--9b37d950-ff32-4ca8-a36c-5dcd13239161.png", alt: "O Level and AS/A Level tuition", href: "/course" },
   { src: "https://media.thezenithlearning.com/uploads/english-that-builds-insight--51d40800-4bdd-488a-934e-1389defd27d7.png", alt: "English that builds insight", href: "/course" },
-  { src: "https://media.thezenithlearning.com/uploads/ib-hero-banner-3840x960--e41dc8f7-77b0-4eef-9c67-9644702b5aa7.png", alt: "IB tuition at Zenith Learning", href: "/course" },
+  { src: "https://media.thezenithlearning.com/uploads/improve-american-curriculum-hero-banner-proportions-corrected--ce7354a3-6e45-46bc-abcb-941b7db20e78.png", alt: "American curriculum tuition", href: "/course" },
   { src: "https://media.thezenithlearning.com/uploads/igcse-expert-tuition-banner--7501c2a9-7413-42cc-b8f3-7de3df8a8cef.png", alt: "IGCSE expert tuition", href: "/course" },
   { src: "https://media.thezenithlearning.com/uploads/o-as-a-levels-hero-banner-3840x960--66157e0e-a7a6-43c0-9459-4aec45ffd2c7.png", alt: "O Level and AS/A Level tuition", href: "/course" },
   { src: "https://media.thezenithlearning.com/uploads/tailored-learning-brighter-futures--26010f0d-f842-4586-8c7d-2f5db76f5901.png", alt: "Tailored learning, brighter futures", href: "/course" },

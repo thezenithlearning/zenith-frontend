@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import { LeadModalProvider } from "@/components/lead/LeadModal";
+import WhatsAppButton from "@/components/shared/WhatsAppButton";
 
 const title = "Zenith Learning – Premium Academic Mentoring | IB, IGCSE, SAT, AP, JEE, NEET";
 const description =
@@ -38,6 +39,7 @@ export default function PublicLayout({
       <Navbar />
       <div className="min-h-screen">{children}</div>
       <Footer />
+      <WhatsAppButton />
     </LeadModalProvider>
   );
 }

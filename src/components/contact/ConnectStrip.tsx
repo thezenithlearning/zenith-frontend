@@ -1,4 +1,4 @@
-import { Mail, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { RiInstagramLine, RiLinkedinFill, RiTwitterXFill, RiYoutubeFill } from "react-icons/ri";
 
 import { Reveal } from "@/components/home/ui";
@@ -28,34 +28,33 @@ export default function ConnectStrip() {
                   Prefer a quick word? Reach us directly.
                 </h2>
                 <p className="mt-3 max-w-xl text-blue-100/75">
-                  Call or write to our admissions team, and follow Zenith for study tips, exam updates and
+                  Call, WhatsApp or write to us, and follow Zenith for study tips, exam updates and
                   student stories.
                 </p>
               </div>
 
               <div className="space-y-4">
-                <p className="text-xs font-bold uppercase tracking-widest text-accent">Admissions</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-accent">Call or WhatsApp</p>
                 <a
-                  href={`tel:${BRAND.admissionsPhone.replace(/\s/g, "")}`}
+                  href={`tel:${BRAND.phone.replace(/\s/g, "")}`}
                   className="flex items-center gap-3 rounded-2xl bg-white/10 px-5 py-4 text-sm font-semibold transition hover:bg-white/20"
                 >
-                  <Phone size={18} className="text-accent" />
-                  {BRAND.admissionsPhone}
+                  <Phone size={18} className="shrink-0 text-accent" />
+                  {BRAND.phone}
                 </a>
+                <p className="pt-3 text-xs font-bold uppercase tracking-widest text-accent">Email</p>
                 <a
-                  href={`mailto:${BRAND.admissionsEmail}`}
+                  href={`mailto:${BRAND.email}`}
                   className="flex items-center gap-3 break-all rounded-2xl bg-white/10 px-5 py-4 text-sm font-semibold transition hover:bg-white/20"
                 >
                   <Mail size={18} className="shrink-0 text-accent" />
-                  {BRAND.admissionsEmail}
+                  {BRAND.email}
                 </a>
-                <p className="pt-3 text-xs font-bold uppercase tracking-widest text-accent">Student &amp; parent support</p>
-                <a href={`tel:${BRAND.supportPhone.replace(/\s/g, "")}`} className="flex items-center gap-3 rounded-2xl bg-white/10 px-5 py-4 text-sm font-semibold transition hover:bg-white/20">
-                  <Phone size={18} className="shrink-0 text-accent" />{BRAND.supportPhone}
-                </a>
-                <a href={`mailto:${BRAND.supportEmail}`} className="flex items-center gap-3 break-all rounded-2xl bg-white/10 px-5 py-4 text-sm font-semibold transition hover:bg-white/20">
-                  <Mail size={18} className="shrink-0 text-accent" />{BRAND.supportEmail}
-                </a>
+                <p className="pt-3 text-xs font-bold uppercase tracking-widest text-accent">Based in</p>
+                <p className="flex items-center gap-3 rounded-2xl bg-white/10 px-5 py-4 text-sm font-semibold">
+                  <MapPin size={18} className="shrink-0 text-accent" />
+                  {BRAND.address.city}, {BRAND.address.country}
+                </p>
                 <p className="pt-3 text-xs font-bold uppercase tracking-widest text-accent">Follow Zenith</p>
                 <ul className="flex flex-wrap gap-3 pt-1">
                   {SOCIALS.map((social) => (

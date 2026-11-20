@@ -15,7 +15,9 @@ const buildSchemas = (faqs: Faq[]) => [
     description: DESCRIPTION,
     logo: { "@type": "ImageObject", url: `${HOME_URL}/favicon.svg` },
     image: HOME_IMAGE,
-    email: BRAND.supportEmail,
+    email: BRAND.email,
+    telephone: BRAND.phone,
+    address: { "@type": "PostalAddress", addressLocality: BRAND.address.city, addressCountry: "IN" },
     sameAs: Object.values(BRAND.social),
     knowsAbout: [
       "IB DP Physics",

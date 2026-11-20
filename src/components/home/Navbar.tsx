@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, ChevronDown, ChevronRight, Menu, X, CircleHelp, ClipboardCheck, PlayCircle, FileText, Users, MessageCircle, type LucideIcon } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronRight, Menu, X, Users, MessageCircle, type LucideIcon } from "lucide-react";
 
 import { TopBannerView } from "@/components/ads/AdParts";
 import { useLeadModal } from "@/components/lead/LeadModal";
@@ -22,14 +22,6 @@ type MenuLink = { href: string | null; label: string; description: string; icon:
 const MORE_LINKS: readonly MenuLink[] = [
   { href: "/about-us", label: "About Us", description: "Get to know Zenith Learning", icon: Users },
   { href: "/contact-us", label: "Contact Us", description: "Talk to our learning team", icon: MessageCircle },
-];
-
-const RESOURCE_LINKS: readonly MenuLink[] = [
-  { href: "/faqs", label: "FAQ", description: "Answers to your questions", icon: CircleHelp },
-  { href: "/classwise-flash-card", label: "Mock Tests", description: "Practise with timed tests", icon: ClipboardCheck },
-  { href: "/demo-videos", label: "Demo Videos", description: "Watch short learning demos", icon: PlayCircle },
-  { href: "/mcqs", label: "MCQ Practice", description: "Build confidence at your own pace", icon: ClipboardCheck },
-  { href: "/pyqs", label: "PYQs", description: "Explore previous years’ papers", icon: FileText },
 ];
 
 const categoryLabel = (category: string) => category.replace(/-/g, " ");
@@ -234,7 +226,6 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <NavDropdown label="Free Resources" id="resource-links" links={RESOURCE_LINKS} />
           <NavDropdown label="More" id="more-links" links={MORE_LINKS} />
         </nav>
 
@@ -276,7 +267,6 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <NavDropdown label="Free Resources" id="resource-links" links={RESOURCE_LINKS} mobile onNavigate={() => setMobileOpen(false)} />
           <NavDropdown label="More" id="more-links" links={MORE_LINKS} mobile onNavigate={() => setMobileOpen(false)} />
           <button
             type="button"

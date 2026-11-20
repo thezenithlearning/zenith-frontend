@@ -1,9 +1,10 @@
-// Test office details — replace with the real address, hours and map query before launch.
+import { BRAND } from "@/content/brand";
+
 export const OFFICE = {
-  name: "Zenith Learning Office",
-  lines: ["221 Test Street, Connaught Place", "New Delhi, Delhi 110001", "India"],
+  name: "Zenith Learning",
+  lines: [`${BRAND.address.city}, ${BRAND.address.country}`],
   // Used for the embedded Google map and the "Get directions" link.
-  mapQuery: "Connaught Place, New Delhi, India",
+  mapQuery: BRAND.address.mapQuery,
   hours: [
     { days: "Monday – Friday", time: "9:00 AM – 7:00 PM IST" },
     { days: "Saturday", time: "10:00 AM – 4:00 PM IST" },

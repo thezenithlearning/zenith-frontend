@@ -73,11 +73,11 @@ export default function Footer() {
               competitive exams.
             </p>
             <a
-              href={`mailto:${BRAND.supportEmail}`}
+              href={`mailto:${BRAND.email}`}
               className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-50/85 transition-colors hover:text-white"
             >
               <Mail className="h-4 w-4 text-accent" />
-              {BRAND.supportEmail}
+              {BRAND.email}
             </a>
             <div className="mt-6 flex gap-3">
               {SOCIALS.map((social) => (
